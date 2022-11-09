@@ -11,6 +11,7 @@
 
     curl_close($curl);
 
-    $objeto = json_decode($response);
+    $data = json_decode($response);
 
-    return $objeto;
+    return $data;
+?>

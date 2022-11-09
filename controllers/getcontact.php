@@ -1,8 +1,8 @@
 <?php
 
-    include('./login.php');
+    include('./getsession.php');
 
-    $sessionName = $login->result->sessionName;
+    $sessionName = $session->result->sessionName;
 
     $URL = "https://develop.datacrm.la/anieto/anietopruebatecnica/webservice.php?operation=query&sessionName=".$sessionName."&query=select%20*%20from%20Contacts;";
     
@@ -17,3 +17,5 @@
     $response = curl_exec($curl);
 
     echo $response;
+
+?>

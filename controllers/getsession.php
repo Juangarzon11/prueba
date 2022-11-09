@@ -2,11 +2,11 @@
 
     include('./getchallenge.php');
 
-    $accessKey = md5($objeto->result->token.'3DlKwKDMqPsiiK0B');
+    $accessKey = md5($data->result->token.'3DlKwKDMqPsiiK0B');
 
     $params = array('operation' => 'login', 'username' => 'prueba', 'accessKey' => $accessKey);
 
-    $params_string = http_build_query($params);
+    $post_params = http_build_query($params);
 
     $curl = curl_init();
 
@@ -14,7 +14,7 @@
         CURLOPT_URL => "https://develop.datacrm.la/anieto/anietopruebatecnica/webservice.php",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_POST => 1, 
-        CURLOPT_POSTFIELDS => $params_string,
+        CURLOPT_POSTFIELDS => $post_params,
         CURLOPT_HTTPHEADER => array(
             'Content-Type: application/x-www-form-urlencoded'
         ),
@@ -24,6 +24,8 @@
 
     curl_close($curl);
     
-    $login = json_decode($response);
+    $session = json_decode($response);
 
-    return $login;
+    return $session;
+
+?>
